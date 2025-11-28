@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Challenge_target_first_program/1.0.0": {
+        "runtime": {
+          "Challenge_target_first_program.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Challenge_target_first_program/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
