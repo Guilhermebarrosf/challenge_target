@@ -28,13 +28,13 @@ class Program
 
         var vendasWithComission = VendasProcessor.calcVendaReceiverComission(vendas, minimumComissionCalc, false);
 
-        var vendasBelowPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionLow);
+        var vendasBelowPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionLow, true);
 
-        var vendasUpPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionHigh);
+        var vendasUpPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionHigh, false);
 
-        VendasPrinter.printerComission(vendasWithoutComission, 0, minimumComissionCalc, false);
-        VendasPrinter.printerComission(vendasBelowPriceDetermined, lowComission, priceDeterminedComissionLow, true);
-        VendasPrinter.printerComission(vendasUpPriceDetermined, highComission, priceDeterminedComissionHigh, true);
+        VendasPrinter.printerComission(vendasWithoutComission, 0, minimumComissionCalc, false, true);
+        VendasPrinter.printerComission(vendasBelowPriceDetermined, lowComission, priceDeterminedComissionLow, true, true);
+        VendasPrinter.printerComission(vendasUpPriceDetermined, highComission, priceDeterminedComissionHigh, true, false);
 
     }
 

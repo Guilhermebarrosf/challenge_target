@@ -4,14 +4,19 @@ public class VendasProcessor
     {
         if (checkReceiver)
         {
-            return vendas.Where(v => v.Valor <= minimumComissionCalc).ToList();
+            return vendas.Where(v => v.Valor < minimumComissionCalc).ToList();
         }
-        return vendas.Where(v => v.Valor > minimumComissionCalc).ToList();
+        return vendas.Where(v => v.Valor >= minimumComissionCalc).ToList();
 
     }
 
-    public static List<Venda> calcVendasPriceDetermined(List<Venda> vendasWithComission, double priceDetermined)
+    public static List<Venda> calcVendasPriceDetermined(List<Venda> vendasWithComission, double priceDetermined, bool belowCondition)
     {
-        return vendasWithComission.Where(v => v.Valor < priceDetermined).ToList();
+        if (belowCondition)
+        {
+            return vendasWithComission.Where(v => v.Valor < priceDetermined).ToList();
+
+        }
+        return vendasWithComission.Where(v => v.Valor >= priceDetermined).ToList();
     }
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BcJlYXZTIVM=",
+  "dgSpecHash": "X4r/l2E2IiA=",
   "success": true,
   "projectFilePath": "C:\\Users\\guilh\\OneDrive\\Desktop\\challenge_target\\Challenge_target_first_program\\Challenge_target_first_program\\Challenge_target_first_program.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\guilh\\.nuget\\packages\\spectre.console\\0.54.0\\spectre.console.0.54.0.nupkg.sha512"
+  ],
   "logs": []
 }
