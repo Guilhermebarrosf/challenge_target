@@ -12,3 +12,4 @@ C:\Users\guilh\OneDrive\Desktop\challenge_target\Challenge_target_first_program\
 C:\Users\guilh\OneDrive\Desktop\challenge_target\Challenge_target_first_program\Challenge_target_first_program\obj\Debug\net8.0\Challenge_target_first_program.pdb
 C:\Users\guilh\OneDrive\Desktop\challenge_target\Challenge_target_first_program\Challenge_target_first_program\obj\Debug\net8.0\Challenge_target_first_program.genruntimeconfig.cache
 C:\Users\guilh\OneDrive\Desktop\challenge_target\Challenge_target_first_program\Challenge_target_first_program\obj\Debug\net8.0\ref\Challenge_target_first_program.dll
+C:\Users\guilh\OneDrive\Desktop\challenge_target\Challenge_target_first_program\Challenge_target_first_program\obj\Debug\net8.0\Challenge_target_first_program.sourcelink.json

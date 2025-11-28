@@ -12,48 +12,30 @@ class Program
         double minimumComissionCalc = 100.00;
         int lowComission = 1;
         int highComission = 5;
-
         if (!File.Exists(pathJson))
         {
             Console.WriteLine("File not found!");
             return;
         }
 
-        string json = File.ReadAllText(pathJson);
+        List <Venda>? vendas = VendasReader.readJsonVenda(pathJson);
 
-        Root? root = JsonSerializer.Deserialize<Root>(json);
-
-        if (root == null || root.Vendas == null)
-        {
-            Console.WriteLine("Data JSON not found!");
-            return;
-        }
-        List<Venda> vendas = root.Vendas;
+        if (vendas == null) return;
 
         Console.WriteLine("=== Vendas reading concluded! ===\n");
 
-        var vendasWithoutComission =
-            vendas.Where(v => v.Valor <= minimumComissionCalc).ToList();
+        var vendasWithoutComission = VendasProcessor.calcVendaReceiverComission(vendas, minimumComissionCalc, true);
 
-        var vendasWithComission =
-            vendas.Where(v => v.Valor > minimumComissionCalc).ToList();
+        var vendasWithComission = VendasProcessor.calcVendaReceiverComission(vendas, minimumComissionCalc, false);
 
-        var vendasBelowPriceDetermined =
-            vendasWithComission.Where(v => v.Valor < priceDeterminedComissionLow).ToList();
+        var vendasBelowPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionLow);
 
-        var vendasUpPriceDetermined =
-            vendasWithComission.Where(v => v.Valor >= priceDeterminedComissionHigh).ToList();
+        var vendasUpPriceDetermined = VendasProcessor.calcVendasPriceDetermined(vendasWithComission, priceDeterminedComissionHigh);
 
-        Console.WriteLine($"\n--- Without Commission (<= R${minimumComissionCalc}) ---\n");
-        foreach (var v in vendasWithoutComission)
-            Console.WriteLine($"Name: {v.Vendedor} - Value: R$ {v.Valor}");
+        VendasPrinter.printerComission(vendasWithoutComission, 0, minimumComissionCalc, false);
+        VendasPrinter.printerComission(vendasBelowPriceDetermined, lowComission, priceDeterminedComissionLow, true);
+        VendasPrinter.printerComission(vendasUpPriceDetermined, highComission, priceDeterminedComissionHigh, true);
 
-        Console.WriteLine($"\n\n--- Commission {lowComission}% (< R${priceDeterminedComissionLow}) ---\n");
-        foreach (var v in vendasBelowPriceDetermined)
-            Console.WriteLine($"Name: {v.Vendedor} - Value: R$ {v.Valor} - Comission: R$ {v.Valor * ((double)lowComission /100):F2}");
-
-        Console.WriteLine($"\n\n--- Commission {highComission}% (>= R${priceDeterminedComissionHigh}) --- ");
-        foreach (var v in vendasUpPriceDetermined)
-            Console.WriteLine($"Name: {v.Vendedor} - Value: R$ {v.Valor} - Comission: R$ {v.Valor * ((double)highComission /100):F2}");
     }
+
 }
